@@ -1,6 +1,6 @@
 {
     "name": "hkdf_sm3",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "The HDKF (HMAC-based Key Derivation Function) implemented with SM3.",
     "exports": {
         ".": {
