@@ -1,18 +1,22 @@
 const esbuild = require("esbuild");
-esbuild.build({
-    entryPoints: ["src/index.ts"],
-    outfile: "dist/index.cjs",
-    bundle: true,
-    minify: true,
-    format: "cjs",
-    legalComments: "none",
-    target: ["esnext"],
-});
-esbuild.build({
-    entryPoints: ["src/index.ts"],
-    outfile: "dist/index.mjs",
-    bundle: true,
-    minify: true,
-    format: "esm",
-    target: ["esnext"],
+const configList = [
+    {
+        entryPoints: ["src/index.ts"],
+        outfile: "dist/index.cjs",
+        format: "cjs",
+    },
+    {
+        entryPoints: ["src/index.ts"],
+        outfile: "dist/index.mjs",
+        format: "esm",
+    },
+];
+
+configList.forEach((config) => {
+    esbuild.build({
+        bundle: true,
+        minify: true,
+        target: ["esnext"],
+        ...config,
+    });
 });
